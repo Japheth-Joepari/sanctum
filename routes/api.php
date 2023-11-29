@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\TodoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,4 +26,8 @@ Route::middleware(['auth:sanctum'])->group(function() {
     Route::get('/todo/{id}', [TodoController::class, 'show']);
     Route::put('/todo/{id}/update', [TodoController::class, 'update']);
     Route::delete('/todo/{id}/delete', [TodoController::class, 'destroy']);
+    Route::post('logout', [AuthController::class, 'logout']);
 });
+
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthCOntroller::class, 'login']);
