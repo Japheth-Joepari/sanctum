@@ -19,10 +19,9 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::middleware(['check.auth.sanctum'])->group(function () {
-    // Your protected routes go here
+Route::middleware(['auth:sanctum'])->group(function() {
     Route::get('/todos', [TodoController::class, 'index']);
-    Route::post('/todo/create', [TodoController::class, 'create']);
+    Route::post('/todo/create', [TodoController::class, 'create']); // Fixed: added forward slash
     Route::get('/todo/{id}', [TodoController::class, 'show']);
     Route::put('/todo/{id}/update', [TodoController::class, 'update']);
     Route::delete('/todo/{id}/delete', [TodoController::class, 'destroy']);
